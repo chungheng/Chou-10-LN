@@ -1,4 +1,4 @@
-mport sys, os
+import sys, os
 from glob import glob
 
 data_dir = 'data'
