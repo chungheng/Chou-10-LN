@@ -20,7 +20,7 @@ from StringIO import StringIO
 
 filename = "Chou_Spletter_Yaksi_et_al_NN_2010_TabS2.xls"
 url = "http://web.stanford.edu/group/luolab/Pdfs/" + filename
-data = pkgutil.get_data('chou10','data/'+filename)
+data = pkgutil.get_data('chou10','../data/'+filename)
 
 def chou10(filepath=None):
 	filepath = filepath or './data/' + filename
