@@ -14,16 +14,21 @@ http://web.stanford.edu/group/luolab/Publications.shtml
 import pandas as pd
 import os.path
 import urllib
+import pkgutil
+
 
 filename = "Chou_Spletter_Yaksi_et_al_NN_2010_TabS2.xls"
 url = "http://web.stanford.edu/group/luolab/Pdfs/" + filename
-
+data = pkgutil.get_data('chou10','data/'+filename)
 
 def chou10(filepath=None):
-	filepath = filepath or filename
-	if not os.path.isfile(filepath):
-		urllib.urlretrieve (url, filename)
-	xlsx = pd.ExcelFile(filename)
+	filepath = filepath or './data/' + filename
+	if data:
+		xlsx = pd.ExeclFile()
+	else:
+		if not os.path.isfile(filepath):
+			urllib.urlretrieve (url, filename)
+		xlsx = pd.ExcelFile(filename)
 	df = xlsx.parse('Sheet1', skiprows=1, index_col=0)
 	return df
 
